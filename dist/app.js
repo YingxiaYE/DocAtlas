@@ -121,3 +121,14 @@
   });
   renderTheme();
 })();
+
+// Collect aggregate page views on DocAtlas production domains.
+(() => {
+  const hosts = ['www.documentai.directory', 'documentai.directory', 'docatlas-document-ai.vercel.app', 'docatlas-tools.vercel.app'];
+  if (!hosts.includes(location.hostname)) return;
+  window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  const script = document.createElement('script');
+  script.defer = true;
+  script.src = '/_vercel/insights/script.js';
+  document.head.appendChild(script);
+})();
